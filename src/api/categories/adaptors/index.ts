@@ -27,7 +27,6 @@ export const getOverview = (type: string, chain?: string, dataType?: string): Pr
 
 export const getOverviewItemPageData = async (type: string, protocolName: string, dataType?: string): Promise<ProtocolAdaptorSummaryProps> => {
 	const item = await getOverviewItem(type, protocolName, dataType)
-
 	const label = type === 'volumes' ? upperCaseFirst("volume") : upperCaseFirst(type)
 	const allCharts: IChartsList = []
 	if (item.totalDataChart) allCharts.push([label, item.totalDataChart])
