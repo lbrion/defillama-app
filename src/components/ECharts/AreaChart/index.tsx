@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid'
 import styled from 'styled-components'
 import { useDarkModeManager } from '~/contexts/LocalStorage'
 import { getUtcDateObject, stringToColour } from '../utils'
-import { SelectLegendMultiple } from '../shared'
+import { SelectLegendMultiple, SelectXAxisViewMultiple } from '../shared'
 import type { IChartProps } from '../types'
 import { useDefaults } from '../useDefaults'
 
@@ -23,6 +23,7 @@ export default function AreaChart({
 	hallmarks,
 	customLegendName,
 	customLegendOptions,
+	customXAxisOptions,
 	tooltipSort = true,
 	chartOptions,
 	height = '360px',
@@ -31,6 +32,8 @@ export default function AreaChart({
 	const id = useMemo(() => uuid(), [])
 
 	const [legendOptions, setLegendOptions] = useState(customLegendOptions)
+
+	const [xAxisOptions, setXAxisOptions] = useState(customXAxisOptions)
 
 	const chartsStack = stacks || customLegendOptions
 
@@ -233,6 +236,14 @@ export default function AreaChart({
 					allOptions={customLegendOptions}
 					options={legendOptions}
 					setOptions={setLegendOptions}
+					title={legendOptions.length === 1 ? legendTitle : legendTitle + 's'}
+				/>
+			)}
+			{customXAxisOptions && customXAxisOptions?.length > 1 && (
+				<SelectXAxisViewMultiple
+					allOptions={customXAxisOptions}
+					options={xAxisOptions}
+					setOptions={setXAxisOptions}
 					title={legendOptions.length === 1 ? legendTitle : legendTitle + 's'}
 				/>
 			)}

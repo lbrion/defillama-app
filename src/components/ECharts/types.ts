@@ -13,6 +13,7 @@ export interface IChartProps {
 	hidedefaultlegend?: boolean
 	customLegendName?: string
 	customLegendOptions?: Array<string>
+	customXAxisOptions?: Array<string>
 	tooltipSort?: boolean
 	chartOptions?: {
 		[key: string]: {
