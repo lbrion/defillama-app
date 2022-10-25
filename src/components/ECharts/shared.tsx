@@ -67,6 +67,13 @@ interface ISelectLegendMultipleProps {
 	title: string
 }
 
+interface ISelectXAxisMultipleProps {
+	allOptions: Array<string>
+	options: Array<string>
+	setOptions: React.Dispatch<React.SetStateAction<Array<string>>>
+	title: string
+}
+
 export function SelectLegendMultiple({ allOptions, options, setOptions, title, ...props }: ISelectLegendMultipleProps) {
 	const router = useRouter()
 
@@ -135,6 +142,9 @@ export function SelectLegendMultiple({ allOptions, options, setOptions, title, .
 	)
 }
 
+export function SelectXAxisViewMultiple({ allOptions, options, setOptions, title, ...props }: ISelectXAxisMultipleProps) {
+	return <div>{options}</div>
+}
 export const ProtocolChartWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
